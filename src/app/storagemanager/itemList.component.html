@@ -1,0 +1,8 @@
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Search By Name" [(ngModel)]="searchTerm"/>
+</div>
+<div class="col">
+    <div class="list-group" *ngFor="let i of filteredItems">
+        <button class="list-group-item list-group-item-action">{{ i.name + "\t" + i.container_name }}</button>
+    </div>
+</div>
