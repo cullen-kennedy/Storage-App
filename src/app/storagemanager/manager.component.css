@@ -1,0 +1,9 @@
+.container-fluid, .row {
+    height: 100%;
+}
+
+@media (min-width: 992px){
+    .sidebar {
+      max-width:400px;
+    }
+}
