@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatInputModule, MatProgressSpinnerModule, MatTableModule } from "@angular/material";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Manager } from "./storagemanager/manager.component";
-import { ItemList } from "./storagemanager/itemList/itemList.component";
-import { SideBar } from './storagemanager/sidebar/sidebar.component';
+import { ItemList } from "./storagemanager/searcher/itemList/itemList.component";
 
-import { DataService } from './shared/services/data.service';
+import { ItemService } from './shared/services/item.service';
 
 import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
-import { ContainerBox } from './storagemanager/containerBox/containerBox.component';
 import { FormsModule } from '@angular/forms';
+import { ContainerService } from './shared/services/container.service';
+import { Searcher } from './storagemanager/searcher/searcher.component';
+import { SearchContainer } from './storagemanager/searcher/searchcontainer/searchcontainer.component';
 
 let routes = [
   { path: "",  component: Manager}
@@ -24,8 +23,8 @@ let routes = [
     AppComponent,
     Manager,
     ItemList,
-    SideBar,
-    ContainerBox
+    Searcher,
+    SearchContainer
   ],
   imports: [
     BrowserModule,
@@ -36,15 +35,11 @@ let routes = [
       enableTracing: false, //Debugging of the routes
 
     }),
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatInputModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   providers: [
-    DataService
+    ItemService,
+    ContainerService
   ],
   bootstrap: [AppComponent]
 })

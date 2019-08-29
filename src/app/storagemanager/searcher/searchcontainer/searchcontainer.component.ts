@@ -1,30 +1,21 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { ItemsDataSource } from '../../shared/services/itemsSource.service';
-import { Item } from '../../shared/models/item.model';
+import { Component, Input } from "@angular/core";
 import { Container } from 'src/app/shared/models/container.model';
-import { DataService } from 'src/app/shared/services/data.service';
-import { ContainerItem,ContainerItemForCreation } from 'src/app/shared/models/containerItem.model';
+import { ContainerItem, ContainerItemForCreation } from 'src/app/shared/models/containerItem.model';
+import { ContainerService } from 'src/app/shared/services/container.service';
 
 @Component({
-  selector: "the-container-box",
-  //Using plain table for just listing the items with no filters/restrictions
-  templateUrl: "containerBox.component.html",
-  styleUrls: ["containerBox.component.css"]
-
+  selector: "search-container",
+  templateUrl: "searchcontainer.component.html"
 })
 
-export class ContainerBox {
+export class SearchContainer {
+    constructor(private data: ContainerService) {}
 
-  constructor(private data: DataService) {
-  }
+    _containerLink: string;
+    newItem: string;
+    currentContainer: Container;
+    currentContainerItems: ContainerItem[];
 
-  _containerLink: string;
-  newItem: string;
-  currentContainer: Container;
-  currentContainerItems: ContainerItem[];
-
-  //Input from itemList selection.
-  //Value is selected link 'containers/:id'
   @Input() 
   public set containerLink(val: string) {
     this._containerLink = val;
@@ -36,8 +27,8 @@ export class ContainerBox {
     this.loadContainerItems();
   }
 
-  //Not much to these load container functions
-  showContainerInfo(){
+   //Not much to these load container functions
+   showContainerInfo(){
     this.data.getContainer(this._containerLink).subscribe(
         container => this.currentContainer = container
       );
