@@ -1,0 +1,36 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+
+
+@include themable(searcher, #577399, #BDD5EA,#F7F7FF);
+
+.search-menu {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 5px 5px;
+    font-size: $default-font-size;
+}
+
+@media (min-width: 768px) {
+
+    .searcher {
+        flex-direction: row;
+
+        .search-menu {
+            width: 29%;
+            height: $menu-height;
+            flex-direction: column;
+            justify-content: stretch;
+            font-size: $default-font-size;
+        }
+
+        .edit-menu {
+            width: 69%;
+            height: $menu-height;
+        }
+    }
+
+    
+
+    
+}

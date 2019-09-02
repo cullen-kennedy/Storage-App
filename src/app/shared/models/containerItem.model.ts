@@ -4,7 +4,7 @@ export class ContainerItem implements Deserializable {
     id: number;
     name: string;
     link: string;
-    date_entered: Date;
+    dateEntered: Date;
     
     deserialize(input: any): this {
         return Object.assign(this, input);

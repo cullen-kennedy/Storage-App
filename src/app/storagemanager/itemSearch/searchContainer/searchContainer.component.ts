@@ -5,7 +5,8 @@ import { ContainerService } from 'src/app/shared/services/container.service';
 
 @Component({
   selector: "search-container",
-  templateUrl: "searchcontainer.component.html"
+  templateUrl: "searchContainer.component.html",
+  styleUrls: ["searchContainer.component.scss"]
 })
 
 export class SearchContainer {

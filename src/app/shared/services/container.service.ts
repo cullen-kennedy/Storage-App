@@ -50,5 +50,14 @@ export class ContainerService {
     );
     }
 
+    public getContainers(link: string): Observable<Container[]> {
+      console.log(link)
+      return this.http.get<Container[]>(`${this.baseUrl}${link}`)
+        .pipe(map(res => res['payload'].map(data => new Container().deserialize(data))),
+        catchError(error => of(null)))
+    }
+
     
 }
+
+

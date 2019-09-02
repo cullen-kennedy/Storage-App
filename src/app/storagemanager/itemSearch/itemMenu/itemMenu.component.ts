@@ -7,21 +7,22 @@ import { ItemService } from 'src/app/shared/services/item.service'
 import { Item } from 'src/app/shared/models/item.model';
 
 @Component({
-    selector: "item-list",
-    templateUrl: "itemList.component.html"
+    selector: "item-menu",
+    templateUrl: "itemMenu.component.html",
+    styleUrls: ["itemMenu.component.scss"]
 })
 
-export class ItemList {
+export class ItemMenu {
     
     searchTerm$ = new Subject<string>();
-    results: Object; //Object is payload. maybe change to Item[] for consistency or vice versa?
+    results: Item[] = []; 
 
     @Output() someEvent = new EventEmitter<string>();
 
     constructor(protected itemService: ItemService) {
         this.itemService.search(this.searchTerm$)
             .subscribe(results => {
-            this.results = results;
+            this.results = results; 
       });
     }
     getContainer(link) {

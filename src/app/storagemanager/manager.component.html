@@ -1,10 +1,11 @@
 
 <div class="container">
-    <div class="view-select">
-        <button>Search Items</button>
-        <button>Filter Containers</button>
+    <div class="btn-grp select-view">
+        <button (click)="setViewSearcher()" class="col button view-button">Search Items</button>
+        <button (click)="setViewContainers()" class="col button view-button">Filter Containers</button>
     </div>
-    <searcher class="content"></searcher>
+    <item-search *ngIf="!view" class="content"></item-search>
+    <container-search *ngIf="view" class="content"></container-search>
 </div>
 
 

@@ -1,0 +1,34 @@
+<div *ngIf="currentContainer" class="container-box">
+    <button class="btn btn-success btn-md">Edit Container</button>
+    <div class="header-container">
+        <div class ="container-title">
+            <h3 class="header container-name">{{currentContainer.name}}</h3>
+        </div>
+        <div class ="container-info">
+            <h6 class="header">Category: {{currentContainer.rel.categoryName}}</h6>
+            <h6 class="header">Location: {{currentContainer.rel.locationName}}</h6>
+        </div>
+    </div> 
+    <div class="container-options">
+        <form (submit)="addItemToContainer()" #addItem="ngForm" novalidate>
+            <div class="form-group">
+                <input type="text" class="form-control" name="itemName" [(ngModel)]="newItem" #itemName="ngModel" required />
+                <button type="submit" class="btn btn-success" [disabled]="addItem.invalid">AddItem</button>
+            </div>
+        </form>   
+    </div>
+  
+    <ul class="item-list">
+        <li *ngFor="let i of currentContainerItems">
+          <div class="item">
+            <h4>
+                {{ i.name }}
+            </h4>
+            <button class="btn item-btn">
+                Edit Item
+            </button>
+          </div>
+        </li>
+      </ul>
+</div>
+

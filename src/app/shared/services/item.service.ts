@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import {Item} from '../models/item.model'
-
 import { map, debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
+import { Item } from '../models/item.model';
 
 
 @Injectable()
@@ -20,10 +19,10 @@ export class ItemService {
                             switchMap(term => this.searchEntries(term)))
       }
     
-    searchEntries(term) {
+    searchEntries(term): Observable<Item[]> {
     return this.http
-        .get(this.baseUrl + this.queryUrl + term)
-        .pipe(map((response: any) => response['payload']),
+        .get<Item[]>(this.baseUrl + this.queryUrl + term)
+        .pipe(map(res => res['payload'].map(data => new Item().deserialize(data))),
         catchError(error => of(null))
     )}
 }

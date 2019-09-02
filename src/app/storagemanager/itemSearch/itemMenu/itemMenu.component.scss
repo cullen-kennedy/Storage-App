@@ -1,0 +1,14 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+
+.input-container {
+    font-size: $default-font-size;
+    display: flex;
+    width: 100%;
+    background-color: $input-color;
+}
+
+
+.item {
+    display: flex;
+}

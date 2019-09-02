@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "searcher",
-  templateUrl: "searcher.component.html",
-  styleUrls: ["searcher.component.scss"]
+  selector: "item-search",
+  templateUrl: "itemSearch.component.html",
+  styleUrls: ["itemSearch.component.scss"]
 })
 
-export class Searcher {
+export class ItemSearch {
 public containerLink: string
 
   //Current container link - input to containerBox

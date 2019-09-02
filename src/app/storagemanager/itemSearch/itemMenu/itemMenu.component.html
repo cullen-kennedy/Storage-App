@@ -1,0 +1,16 @@
+<div class="input-container">
+  <Label>Quicksearch</Label>
+  <input (keyup)="searchTerm$.next($event.target.value)">
+</div>
+<ul class="item-list" *ngIf="results">
+  <li *ngFor="let result of results">
+    <div class="item">
+      <h4>
+          {{ result.name }}
+      </h4>
+      <button class="btn item-btn" (click)="getContainer(result.rel.link)">
+          {{ result.rel.name }}
+      </button>
+    </div>
+  </li>
+</ul>

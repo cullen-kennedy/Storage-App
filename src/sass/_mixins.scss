@@ -1,21 +1,48 @@
+@import 'variables';
+
+//To do: add more mixins/variables to refactor some hacky/repetitive css 
+
 @mixin box-sizing($box-model) {
     -webkit-box-sizing: $box-model; // Safari <= 5
        -moz-box-sizing: $box-model; // Firefox <= 19
             box-sizing: $box-model;
 }
 
-@mixin centerer($horizontal: true, $vertical: true) {
-    position: absolute;
-    @if ($horizontal and $vertical) {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    } @else if ($horizontal) {
-      left: 50%;
-      transform: translate(-50%, 0);
-    } @else if ($vertical) {
-      top: 50%;
-      transform: translate(0, -50%);
+@mixin themable($theme-name, $container-bg, $menu-bg, $view-bg) {
+  .#{$theme-name} {
+    background-color: $container-bg;
+    border: 1px solid $border-dark;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 95vh;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 1em;
+    width: 100%;
+
+    * {
+      color: $innertext;
+      font-size: $default-font-size;
     }
+
+    .search-menu {
+      background-color: $menu-bg;
+      height: $mobile-menu-height;
+      border: 2px solid $border-dark;
+      display: flex;
+    }
+
+    .edit-menu {
+        background-color: $view-bg;
+        height: $mobile-edit-menu-height;
+        border: 2px solid $border-dark;
+    }
+  }
 }
+
+
+
+
+
 

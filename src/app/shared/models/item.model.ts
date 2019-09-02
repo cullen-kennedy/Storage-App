@@ -1,12 +1,17 @@
-//Used by datasource / mat table
+import { Deserializable } from './deserializable.model';
 
-export interface Item {
+export class Item implements Deserializable {
     id: number;
     name: string;
     link: string;
-    date_entered: Date;
-    rel: {name: string,
+    dateEntered: Date;
+    rel: {
+        name: string,
         link: string;
+    }
+
+    deserialize(input: any): this {
+        return Object.assign(this, input);
     }
 }
   

@@ -4,10 +4,10 @@ export class Container implements Deserializable {
     id: number;
     name: string;
     link: string;
-    date_entered: Date;
+    dateEntered: Date;
     rel: {
-        category_name: string,
-        location_name: string
+        categoryName: string,
+        locationName: string
     }
 
     deserialize(input: any): this {

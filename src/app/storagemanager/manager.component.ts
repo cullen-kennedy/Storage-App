@@ -9,5 +9,15 @@ import { Component } from "@angular/core";
 
 export class Manager {
 
+  view: boolean = false;
+
+  setViewSearcher() {
+    this.view = false;
+  }
+
+  setViewContainers() {
+    this.view = true;
+  }
+
 }
 
