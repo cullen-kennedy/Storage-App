@@ -2,6 +2,7 @@ import { Component, Input } from "@angular/core";
 import { Container } from 'src/app/shared/models/container.model';
 import { ContainerItem, ContainerItemForCreation } from 'src/app/shared/models/containerItem.model';
 import { ContainerService } from 'src/app/shared/services/container.service';
+import { ItemService } from 'src/app/shared/services/item.service';
 
 @Component({
   selector: "search-container",
@@ -10,7 +11,7 @@ import { ContainerService } from 'src/app/shared/services/container.service';
 })
 
 export class SearchContainer {
-    constructor(private data: ContainerService) {}
+    constructor(private data: ContainerService, private itemData: ItemService) {}
 
     _containerLink: string;
     newItem: string;
@@ -54,6 +55,23 @@ export class SearchContainer {
       },
       error => console.log('HTTP Error', error) 
     );
+  }
+
+  deleteItem(id) {
+    //Calls /item/:id... may want to change to containers/:Cid/items/:Iid for consistency?
+    this.itemData.deleteItem(id).subscribe(
+      success => {
+            if (success) {
+                console.log("Successfully deleted item") 
+                this.loadContainerItems()
+            }
+      },
+      error => console.log('HTTP Error', error) 
+    );
+  }
+
+  deleteContainer(id) {
+    //Danger zone... will cascade!
   }
 }
 

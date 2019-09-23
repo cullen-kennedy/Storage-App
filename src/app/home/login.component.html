@@ -1,0 +1,15 @@
+
+<form class='form' (submit)="onLogin()" #theForm="ngForm" novalidate> 
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" [(ngModel)]="creds.email" #email="ngModel" required />
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="pass" [(ngModel)]="creds.pass" #pass="ngModel" required />
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn" value="Login" [disabled]="theForm.invalid"/>
+    </div>
+</form>
+
+
+<!-- Add corresponding singup form -->

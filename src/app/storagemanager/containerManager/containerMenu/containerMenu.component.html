@@ -1,0 +1,45 @@
+<div class="container-options">
+    
+        <form (submit)="addContainer()" #addItem="ngForm" novalidate>
+            <select name="Category" class="form-control input-field" [(ngModel)]="newContainer.categoryId" #categoryId="ngModel" id="option" required>
+                    <!--Todo: default options don't show up-->
+                    <option value="none" selected disabled hidden> 
+                            Category 
+                    </option> 
+                    <option *ngFor="let category of data.categories" value="{{category.id}}">{{category.name}}</option>
+            </select>
+            <select name="Location" class="form-control input-field" [(ngModel)]="newContainer.locationId" #locationId="ngModel" id="option" required>
+                    <option value="none" selected disabled hidden> 
+                            Location 
+                    </option> 
+                    <option *ngFor="let location of data.locations" value="{{location.id}}">{{location.name}}</option>
+            </select>
+            <div class="form-group input-container">
+                    <input type="text" class="form-control" name="containerName" [(ngModel)]="newContainer.name" #name="ngModel" required />
+                    <button type="submit" class="btn btn-success" [disabled]="addContainer.invalid">Add</button> 
+            </div>
+        </form>   
+
+</div>
+
+<div class="filters">
+    <div class="filter-group category-list">
+        <h4 class="header">Categories</h4>
+        <div class="btn" (click)="sendCategory()">Clear Category</div>
+        <ul class="filter-list">
+            <li class="filter" *ngFor="let category of data.categories">
+                <div class="btn category-selector" id="{{category.name}}" (click)="sendCategory(category.name)"> {{ category.name }}</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="filter-group location-list">
+        <h4 class="header">Location</h4>
+        <div class="btn" (click)="sendLocation()">Clear Location</div>
+        <ul class="filter-list">
+            <li class="filter" *ngFor="let location of data.locations">
+                <div class="btn location-selector" id="{{location.name}}" (click)="sendLocation(location.name)"> {{ location.name }}</div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class='searcher'>
+    <container-menu class="search-menu" (locationEvent)="updateLocation($event)" (categoryEvent)="updateCategory($event)">
+        <search-container class="menu edit-menu" [containerLink]="containerLink"></search-container>
+    </container-menu>
+    <container-list [containersLink]="containersLink" (someEvent)="updateContainer($event)" class="edit-menu"></container-list>
+<div>

@@ -14,3 +14,9 @@ export class Container implements Deserializable {
         return Object.assign(this, input);
     }
 }
+
+export class ContainerForCreation {
+    name: string;
+    categoryId: number;
+    locationId: number;
+}

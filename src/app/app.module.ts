@@ -10,16 +10,24 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ContainerService } from './shared/services/container.service';
-import { SearchContainer } from './storagemanager/itemSearch/searchContainer/searchContainer.component';
-import { ContainerList } from './storagemanager/containerSearch/containerList/containerList.component';
-import { ContainerMenu } from './storagemanager/containerSearch/containerMenu/containerMenu.component';
-import { ContainerSearch } from './storagemanager/containerSearch/containerSearch.component';
-import { ItemSearch } from './storagemanager/itemSearch/itemSearch.component';
-import { ItemMenu } from './storagemanager/itemSearch/itemMenu/itemMenu.component';
+import { SearchContainer } from './storagemanager/itemManager/searchContainer/searchContainer.component';
+import { ContainerList } from './storagemanager/containerManager/containerList/containerList.component';
+import { ContainerMenu } from './storagemanager/containerManager/containerMenu/containerMenu.component';
+import { ContainerManager } from './storagemanager/containerManager/containerManager.component';
+import { ItemManager } from './storagemanager/itemManager/itemManager.component';
+import { ItemMenu } from './storagemanager/itemManager/itemMenu/itemMenu.component';
 import { ContainerAttributeService } from './shared/services/containerAttribute.service';
+import { Login } from './home/login.component';
+import { UserService } from './shared/services/user.service';
+import {  AuthGuardService } from './shared/services/auth-guard.service';
+import { AuthService } from './shared/services/auth.service';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { Home } from './home/home.component';
 
 let routes = [
-  { path: "",  component: Manager}
+  { path: "home",  component: Home},
+  { path: "", component: Manager, canActivate: [AuthGuardService]},
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -27,11 +35,13 @@ let routes = [
     AppComponent,
     Manager,
     ItemMenu,
-    ItemSearch,
+    ItemManager,
     SearchContainer,
     ContainerList,
     ContainerMenu,
-    ContainerSearch
+    ContainerManager,
+    Login,
+    Home
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,12 @@ let routes = [
   providers: [
     ItemService,
     ContainerService,
-    ContainerAttributeService
+    ContainerAttributeService,
+    UserService,
+    AuthService,
+    AuthGuardService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,8 +4,8 @@
         <button (click)="setViewSearcher()" class="col button view-button">Search Items</button>
         <button (click)="setViewContainers()" class="col button view-button">Filter Containers</button>
     </div>
-    <item-search *ngIf="!view" class="content"></item-search>
-    <container-search *ngIf="view" class="content"></container-search>
+    <item-manager *ngIf="!view" class="content"></item-manager>
+    <container-manager *ngIf="view" class="content"></container-manager>
 </div>
 
 

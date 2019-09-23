@@ -1,0 +1,26 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+
+
+.container {
+    @include centerer();
+    text-align: center;
+}
+
+.user-toggle {
+    font-size: $default-font-size;
+}
+
+.btn-grp {
+    flex-direction: column;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;;
+}
+
+.btn-grp > button {
+    padding: 1.5rem 1.5rem;
+    margin-top: 5px;
+}
+

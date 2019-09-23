@@ -1,17 +1,24 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "container-search",
-  templateUrl: "containerSearch.component.html",
-  styleUrls: ["containerSearch.component.scss"]
+  selector: "container-manager",
+  templateUrl: "containerManager.component.html",
+  styleUrls: ["containerManager.component.scss"]
 })
 
-export class ContainerSearch {
+export class ContainerManager {
 
 
   public location: string = "";
   public category: string = "";
   public containersLink: string;
+
+  public containerLink: string
+
+  //Current container link - input to containerBox
+  updateContainer(link) {
+    this.containerLink = link
+  }
 
   updateLocation(location) {
     this.location = location || ""

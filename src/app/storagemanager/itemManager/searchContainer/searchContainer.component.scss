@@ -4,12 +4,14 @@
 .container-box {
     display: flex;
     flex-direction: column;   
-    height: 59vh;
+    height: 55vh;
+    border: 2px solid black;
+    padding: 1rem 1rem;
 }
 
 @media (min-width: 768px) {
     .container-box {
-        height: 90vh;
+        height: 85vh;
     }
 }
 

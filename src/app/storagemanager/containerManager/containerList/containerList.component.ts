@@ -1,4 +1,4 @@
-import {  Component, Input } from '@angular/core';
+import {  Component, Input, Output, EventEmitter } from '@angular/core';
 import { Container } from 'src/app/shared/models/container.model';
 import { ContainerService } from 'src/app/shared/services/container.service';
 
@@ -13,6 +13,7 @@ export class ContainerList {
 
     constructor(private data: ContainerService) {}
 
+   containerLink: string; 
    _containersLink: string;
    containersList: Object
 
@@ -27,10 +28,13 @@ export class ContainerList {
   }
 
   updateContainersList() {
-
     this.data.getContainers(this._containersLink).subscribe(
         results => {this.containersList = results}
-    );
-      
+    ); 
   }
+
+  updateContainerLink(link) {
+      this.containerLink = link
+  }
+
 }

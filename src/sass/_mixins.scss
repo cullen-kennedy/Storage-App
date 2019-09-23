@@ -31,16 +31,32 @@
       height: $mobile-menu-height;
       border: 2px solid $border-dark;
       display: flex;
+      padding: 1rem 1rem;
     }
 
     .edit-menu {
         background-color: $view-bg;
         height: $mobile-edit-menu-height;
         border: 2px solid $border-dark;
+        padding: 1rem 1rem;
     }
   }
 }
 
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
 
 
 

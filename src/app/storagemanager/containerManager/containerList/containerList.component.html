@@ -1,0 +1,8 @@
+<div class="container-list">
+    <div class="container-button" *ngFor="let container of containersList">
+        <button class="btn item-btn" (click)="updateContainerLink(container.link)">
+            {{ container.name }}
+        </button>
+    </div>    
+</div>
+<search-container class="menu edit-menu" [containerLink]="containerLink"></search-container>

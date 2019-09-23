@@ -8,7 +8,7 @@ import { ContainerItem } from '../models/containerItem.model';
 
 @Injectable()
 export class ContainerAttributeService {
-    baseUrl = 'http://localhost:12343/';
+    baseUrl = 'http://localhost:8080/';
 
     locations: any[]
     categories: any[]
